@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Sign In",
+    "onPress": "handleSignIn",
+    "iconName": "log-in",
+    "textColor": "#FFFFFF",
+    "iconColor": "#FFFFFF"
+  },
+  {
+    "title": "Sign Up",
+    "onPress": "handleSignUp",
+    "iconName": "user-plus",
+    "textColor": "#FFFFFF",
+    "iconColor": "#FFFFFF"
+  },
+  {
+    "title": "Sign in with Google",
+    "onPress": "handleGoogleSignIn",
+    "iconName": "",
+    "textColor": "",
+    "iconColor": ""
+  }
+]

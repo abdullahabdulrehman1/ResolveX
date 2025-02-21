@@ -1,13 +1,17 @@
 import AnimatedTextInput from "@/components/animatedTextInput";
 import GoogleSignInButton from "@/components/googleSignInButton";
 import PrimaryButton from "@/components/primaryButton";
+import ErrorText from "@/components/signIn/errorText";
+import Footer from "@/components/signIn/footer";
+import ForgotPasswordText from "@/components/signIn/forgotPasswordText";
 import Header from "@/components/signIn/header";
 import Heading from "@/components/signIn/heading";
+
 import { useThemeContext } from "@/context/themecontext";
 import { handleSignIn } from "@/utils/signin/signInHandle";
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { Divider, Text } from "react-native-paper";
 
 const SignInScreen: React.FC = () => {
@@ -17,10 +21,13 @@ const SignInScreen: React.FC = () => {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {}
   );
-  
+
   return (
-    <View
-      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    <ScrollView
+      contentContainerStyle={[
+        styles.container,
+        { backgroundColor: theme.colors.background },
+      ]}
     >
       <Header title="Sign In" />
       <View style={styles.content}>
@@ -31,7 +38,7 @@ const SignInScreen: React.FC = () => {
           onChangeText={setEmail}
           error={errors.email}
         />
-        {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+        {errors.email && <ErrorText message={errors.email} />}
         <AnimatedTextInput
           label="Password"
           secureTextEntry
@@ -39,9 +46,7 @@ const SignInScreen: React.FC = () => {
           onChangeText={setPassword}
           error={errors.password}
         />
-        {errors.password && (
-          <Text style={styles.errorText}>{errors.password}</Text>
-        )}
+        {errors.password && <ErrorText message={errors.password} />}
         <PrimaryButton
           title="Sign In"
           textColor="white"
@@ -50,13 +55,7 @@ const SignInScreen: React.FC = () => {
           iconName="log-in"
           iconFamily="Feather"
         />
-        <TouchableOpacity onPress={() => router.push("/forgotPassword")}>
-          <Text
-            style={[styles.forgotPasswordText, { color: theme.colors.primary }]}
-          >
-            Forgot your password?
-          </Text>
-        </TouchableOpacity>
+        <ForgotPasswordText />
         <Divider
           style={[styles.divider, { backgroundColor: theme.colors.primary }]}
         />
@@ -66,49 +65,20 @@ const SignInScreen: React.FC = () => {
             // Handle Google sign-in logic
           }}
         />
-        <View style={styles.footer}>
-          <Text style={[styles.footerText, { color: theme.colors.text }]}>
-            Don't have an account?
-          </Text>
-          <TouchableOpacity onPress={() => router.push("/signup")}>
-            <Text style={[styles.signUpText, { color: theme.colors.primary }]}>
-              Sign Up
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <Footer />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  forgotPasswordText: {
-    marginTop: 10,
-
-    textAlign: "right",
-  },
-  footer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 20,
-  },
-  footerText: {
-    color: "gray",
-  },
-  signUpText: {
-    marginLeft: 5,
+    flexGrow: 1,
+    padding: 16,
   },
   content: {
     flex: 1,
     justifyContent: "center",
-    padding: 16,
-  },
-  errorText: {
-    color: "red",
-    marginBottom: 2,
   },
   divider: {
     marginVertical: 10,

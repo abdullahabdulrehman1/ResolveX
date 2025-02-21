@@ -2,6 +2,7 @@ import { useCustomFonts } from "@/config/font";
 import { ThemeProvider } from "@/context/themecontext";
 import { Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
+import { PaperProvider } from "react-native-paper";
 
 export default function RootLayout() {
   const fontsLoaded = useCustomFonts();
@@ -16,6 +17,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider>
+      <PaperProvider>
       <Stack
         screenOptions={{
           gestureEnabled: true,
@@ -40,7 +42,7 @@ export default function RootLayout() {
             headerShown: false,
           }}
         />
-      </Stack>
+      </Stack></PaperProvider>
     </ThemeProvider>
   );
 }

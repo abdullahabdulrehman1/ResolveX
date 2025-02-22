@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
-import { Button, Text } from "react-native-paper";
-import EmployeeSignUp from "@/components/signup/employeeSignUp";
-import IndividualSignUp from "@/components/signup/individualSignUp";
-import OrganizationSignUp from "@/components/signup/organizationSignUp";
-import { useThemeContext } from "@/context/themecontext";
+import ErrorText from "@/components/signIn/errorText";
 import Header from "@/components/signIn/header";
 import Heading from "@/components/signIn/heading";
-import CustomModal from "@/utils/signUp/customModal";
-import { useTextStyles } from "@/config/textStyles";
+import DepartmentSignUp from "@/components/signup/departmentSignUp";
+import IndividualSignUp from "@/components/signup/individualSignUp";
+import OrganizationSignUp from "@/components/signup/organizationSignUp";
 import SignInLink from "@/components/signup/signInLink";
-import ErrorText from "@/components/signIn/errorText";
+import { useTextStyles } from "@/config/textStyles";
+import { useThemeContext } from "@/context/themecontext";
+import CustomModal from "@/utils/signUp/customModal";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { Button, Text } from "react-native-paper";
 import { z } from "zod";
 import {
+  departmentSignUpSchema,
   individualSignUpSchema,
   organizationSignUpSchema,
-  employeeSignUpSchema,
 } from "./../schema/signUpSchema";
 
 const SignUpScreen: React.FC = () => {
@@ -43,9 +43,9 @@ const SignUpScreen: React.FC = () => {
       },
     },
     {
-      title: "Employee",
+      title: "Department",
       onPress: () => {
-        setSelectedRole("employee");
+        setSelectedRole("department");
         closeMenu();
       },
     },
@@ -60,8 +60,8 @@ const SignUpScreen: React.FC = () => {
       case "organization":
         schema = organizationSignUpSchema;
         break;
-      case "employee":
-        schema = employeeSignUpSchema;
+      case "department":
+        schema = departmentSignUpSchema;
         break;
       default:
         schema = individualSignUpSchema;
@@ -110,8 +110,8 @@ const SignUpScreen: React.FC = () => {
       {selectedRole === "organization" && (
         <OrganizationSignUp onSubmit={handleSignUp} />
       )}
-      {selectedRole === "employee" && (
-        <EmployeeSignUp onSubmit={handleSignUp} />
+      {selectedRole === "department" && (
+        <DepartmentSignUp onSubmit={handleSignUp} />
       )}
       {Object.keys(errors).map((key) => (
         <ErrorText key={key} message={errors[key]} />

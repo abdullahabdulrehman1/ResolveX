@@ -17,7 +17,7 @@ interface PrimaryButtonProps {
   iconFamily?: 'Feather' | 'MaterialCommunityIcons';
 }
 
-const PrimaryButton: React.FC<PrimaryButtonProps> = ({ title, iconColor, textColor, onPress, disabled = false, iconName, iconFamily = 'Feather' }) => {
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({ title, iconColor = 'white', textColor = "white", onPress, disabled = false, iconName, iconFamily = 'Feather' }) => {
   const { theme } = useThemeContext();
   const scaleValue = new Animated.Value(1);
   const depthValue = new Animated.Value(0);

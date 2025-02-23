@@ -42,6 +42,12 @@ export default function RootLayout() {
             headerShown: false,
           }}
         />
+        <Stack.Screen
+          name="forgotPassword/index"
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack></PaperProvider>
     </ThemeProvider>
   );

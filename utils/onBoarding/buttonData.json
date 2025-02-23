@@ -12,12 +12,6 @@
     "iconName": "user-plus",
     "textColor": "#FFFFFF",
     "iconColor": "#FFFFFF"
-  },
-  {
-    "title": "Sign in with Google",
-    "onPress": "handleGoogleSignIn",
-    "iconName": "",
-    "textColor": "",
-    "iconColor": ""
   }
+  
 ]

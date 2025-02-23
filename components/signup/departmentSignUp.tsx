@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
 import AnimatedTextInput from "@/components/animatedTextInput";
 import PrimaryButton from "@/components/primaryButton";
 import ErrorText from "@/components/signIn/errorText";
 import { departmentSignUpSchema } from "@/schema/signUpSchema";
 import { handleSignUp } from "@/utils/signUp/signUpHandler";
-import OrganizationSelect from "./OrganizationSelect";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import OrganizationSelect from "./organizationSelect";
 
 interface DepartmentSignUpProps {
   onSubmit: (data: any) => void;
@@ -23,12 +23,12 @@ const DepartmentSignUp: React.FC<DepartmentSignUpProps> = ({ onSubmit }) => {
     "Organization One",
     "Organization Two",
     "Organization Three",
-    "Organization Three",
-    "Organization Three",
-    "Organization Three",
-    "Organization Three",
-    "Organization Three",
-    "Organization Three",
+    "Organization Four",
+    "Organization Five",
+    "Organization Siz",
+    "Organization Seven",
+    "Organization Eight",
+    "Organization Nine",
     // Add more organizations here
   ]);
 

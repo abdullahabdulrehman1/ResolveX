@@ -98,24 +98,16 @@ const OnBoardScreen: React.FC = () => {
           </View>
 
           <View style={styles.buttonContainer}>
-            {buttonData.map((button, index) =>
-              button.title === "Sign in with Google" ? (
-                <GoogleSignInButton
-                  key={index}
-                  title={button.title}
-                  onPress={buttonFunctions[button.onPress]}
-                />
-              ) : (
-                <PrimaryButton
-                  key={index}
-                  title={button.title}
-                  onPress={buttonFunctions[button.onPress]}
-                  iconName={button.iconName as any}
-                  textColor={button.textColor}
-                  iconColor={button.iconColor}
-                />
-              )
-            )}
+            {buttonData.map((button, index) => (
+              <PrimaryButton
+                key={index}
+                title={button.title}
+                onPress={buttonFunctions[button.onPress]}
+                iconName={button.iconName as any}
+                textColor={button.textColor}
+                iconColor={button.iconColor}
+              />
+            ))}
           </View>
         </Animated.View>
       </ScrollView>

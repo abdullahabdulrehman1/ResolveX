@@ -59,12 +59,7 @@ const SignInScreen: React.FC = () => {
         <Divider
           style={[styles.divider, { backgroundColor: theme.colors.primary }]}
         />
-        <GoogleSignInButton
-          title="Sign in with Google"
-          onPress={() => {
-            // Handle Google sign-in logic
-          }}
-        />
+        
         <Footer />
       </View>
     </ScrollView>

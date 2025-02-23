@@ -61,7 +61,7 @@ const AnimatedTextInput: React.FC<AnimatedTextInputProps> = ({
           },
         }}
         style={[styles.input, { backgroundColor: theme.colors.background }]}
-        error={!!error}
+        
         value={value}
         {...restProps}
       />
